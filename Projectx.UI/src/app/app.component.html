@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="/w3css/4/w3.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body class="body" ng-app="myApp" ng-controller="userCtrl">
+
+  <div class="w3-container">
+
+    <h1>Super Hero Generator</h1>
+    <hr>
+    <style>
+      h1 {
+        text-align: center;
+        background-color: coral;
+        color: #614caf;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-size: 300%;
+      }
+
+      .text1 {
+        text-align: left;
+        text-shadow: #4ca3af;
+        font-size: medium;
+        font-style: italic;
+      }
+
+      .button {
+        background-color: #614caf;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+      }
+
+      .button2 {
+        background-color: #4ca3af;
+        /* Green */
+        border: none;
+        border-radius: 8px;
+        color: white;
+        padding: 12px 24px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 200
+      }
+
+      .button2:hover {
+        background-color: #6dcf70;
+        color: white;
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      .button:hover {
+        background-color: #6dcf70;
+        color: white;
+        box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+      }
+
+      .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+      }
+
+      .button:hover span {
+        padding-right: 25px;
+      }
+
+      .button:hover span:after {
+        opacity: 1;
+        right: 0;
+      }
+
+      .th1 {
+        text-align: center;
+      }
+
+      table.center {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .center2 {
+        margin: 0;
+        position: fixed;
+        top: 80%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+      p.solid {border-style: solid;}
+
+      .body {
+        background-color: #c6d6d8;
+      }
+    </style>
+
+    <table class="center" border="2">
+      <thead>
+        <th class="th1" style="font-family: Arial, Helvetica, sans-serif">Name</th>
+        <br><br><br>
+        <th style="font-family: Arial, Helvetica, sans-serif">First Name</th>
+        <br><br><br>
+        <th style="font-family: Arial, Helvetica, sans-serif">Last Name</th>
+        <br><br><br>
+        <th style="font-family: Arial, Helvetica, sans-serif">Place</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hero of heroes">
+          <td style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ hero.name }}</td>
+          <br><br>
+          <td style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ hero.firstName }}</td>
+          <br><br>
+          <td style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ hero.lastName }}</td>
+          <br><br>
+          <td style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">{{ hero.place }}</td>
+          <td><button class="button2" (click)="editHero(hero)">Edit</button></td>
+
+        </tr>
+        <p><a href="https://www.britannica.com/topic/list-of-superheroes-2024795" target="_blank"
+            rel="noopener noreferrer">List Of All Superheroes</a></p>
+      </tbody>
+    </table>
+
+    <app-edit-hero [hero]="heroToEdit" (heroesUpdated)="updateHeroList($event)"></app-edit-hero>
+
+    <br>
+    <div class="container">
+      <div class="center2">
+        <button class="button" (click)="initNewHero()">Create New Hero</button>
+      </div>
+    </div>
+
+    <body>
+      <html>

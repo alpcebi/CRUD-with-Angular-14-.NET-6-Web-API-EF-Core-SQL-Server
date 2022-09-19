@@ -1,0 +1,37 @@
+<style>
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 12px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    </style>
+<div *ngIf="hero">
+<h2>{{ hero.name }}</h2>
+<div>
+    Name:
+    <input [(ngModel)]="hero.name" placeholder="Name"/>
+</div>
+<div>
+    First Name:
+    <input [(ngModel)]="hero.firstName" placeholder="FirstName"/>
+</div>
+<div>
+    Last Name:
+    <input [(ngModel)]="hero.lastName" placeholder="Last Name"/>
+</div>
+<div>
+    Place:
+    <input [(ngModel)]="hero.place" placeholder="Place"/>
+</div>
+<button class="button" (click)="updateHero(hero)"  *ngIf="hero.id">Save</button>
+<button class="button" (click)="deleteHero(hero)"  *ngIf="hero.id">Delete</button>
+<button class="button" (click)="createHero(hero)"  *ngIf="!hero.id">Create</button>
+</div>
